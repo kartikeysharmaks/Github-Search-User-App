@@ -6,6 +6,7 @@ import location from "../../../assets/location.png";
 import user from "../../../assets/user.png";
 import { useParams } from "react-router-dom";
 import Repo from "../../Others/Repo";
+import Header from "../../Others/Header";
 
 const User = () => {
   const { login } = useParams();
@@ -33,36 +34,37 @@ const User = () => {
 
   return (
     <div className="container">
-      <div className="bg-[#444343] p-[30px] rounded-[10px] flex flex-row text-[#fff]">
-        <div className="w-[30%] m-auto">
+      <Header/>
+      <div className="bg-[#444343] justify-start items-center rounded-[10px] p-[15px] md:p-[30px] flex flex-row text-[#fff]">
+        <div className="w-[20%] m-auto">
           <img
             src={userInfo?.avatar_url}
             alt="user-avatar"
-            className="w-[200px] rounded-[10px] object-cover"
+            className="w-[100%] rounded-[10px] object-cover"
           />
         </div>
-        <div className="p-[10px] space-y-3">
-          <h3 className="text-[24px] font-bold">{userInfo?.name}</h3>
-          <p className="text-[18px] font-normal">{userInfo?.bio}</p>
-          <div className="text-[15px] font-[100] flex flex-col space-y-2">
+        <div className="p-[10px] w-[80%] space-y-3 ml-[15px] md:ml-[40px] m-auto">
+          <h3 className="text-[16px] md:text-[24px] font-bold">{userInfo?.name}</h3>
+          <p className="text-[12px] md:text-[18px] font-normal">{userInfo?.bio}</p>
+          <div className="text-[9px] md:text-[15px] font-[100] flex flex-col space-y-2">
             <p className="flex flex-row items-center gap-2">
-              <img src={user} alt="user-img" className="w-[30px]" />
+              <img src={user} alt="user-img" className="w-[15px] md:w-[30px]" />
               {userInfo?.followers} Followers. Following {userInfo?.following}
             </p>
             {userInfo?.location && (
               <p className="flex flex-row items-center gap-2">
-                <img src={location} alt="location" className="w-[30px]" />
+                <img src={location} alt="location" className="w-[15px] md:w-[30px]" />
                 {userInfo?.location}
               </p>
             )}
             {userInfo?.blog && (
               <p className="flex flex-row items-center gap-2">
-                <img src={site} alt="blog/website" className="w-[30px]" />
+                <img src={site} alt="blog/website" className="w-[15px] md:w-[30px]" />
                 {userInfo?.blog}
               </p>
             )}
             <p className="flex flex-row items-center gap-2">
-              <img src={github} alt="github-profile" className="w-[30px]" />
+              <img src={github} alt="github-profile" className="w-[15px] md:w-[30px]" />
               <a href={userInfo?.html_url}>View GitHub Profile</a>
             </p>
           </div>

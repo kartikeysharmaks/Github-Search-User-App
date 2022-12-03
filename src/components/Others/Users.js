@@ -5,7 +5,7 @@ const User = ({ user }) => {
   const { avatar_url, login, id } = user;
   console.log(user);
   return (
-    <div className="w-[300px] h-[300px] flex flex-col my-6 items-start justify-center p-5 border-b-[#444] border-solid">
+    <div className="w-[220px] h-[300px] flex flex-col my-6 mx-auto items-start justify-center p-2 border-b-[#444] border-solid">
       <div className="w-[200px] h-[200px] mx-auto mb-3">
         <img src={avatar_url} alt={login} className="w-[100%] rounded-[50%]" />
       </div>

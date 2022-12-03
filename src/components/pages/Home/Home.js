@@ -34,6 +34,12 @@ const Home = () => {
     setLimit(parseInt(value));
   };
 
+  const getUsers = async () => {
+    const response = await fetch("https://api.github.com/users");
+    const FinalData = await response.json();
+    setUsers(FinalData);
+  };
+
   const fetchUsers = useCallback(async () => {
     try {
       const { data } = await axios.get(
@@ -50,7 +56,7 @@ const Home = () => {
       console.error(error);
       return null;
     }
-  },[limit,query,page]);
+  }, [limit, query, page]);
 
   const handleSearchUsers = async (e) => {
     e.preventDefault();
@@ -69,13 +75,13 @@ const Home = () => {
         setUsers(items);
       }
     };
-
+    getUsers();
     displayUsersOnChange();
   }, [page, limit, query, fetchUsers]);
 
   return (
     <div className="container">
-      <Header/>
+      <Header />
       <div className="bg-[#333] px-[40px] rounded-[10px] h-[150px] flex flex-col justify-center text-white">
         <h2 className="text-4xl font-bold text-center">GitHub Search User</h2>
         <form className="my-[10px] mx-0 flex">
@@ -125,7 +131,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
           {users ? (
             users.map((user) => {
               return <User user={user} key={user.id} />;
