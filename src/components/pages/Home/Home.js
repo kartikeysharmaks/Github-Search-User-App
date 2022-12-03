@@ -11,7 +11,7 @@ const Home = () => {
   //Page
   const [page, setPage] = useState(1);
   //Per page
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(50);
 
   const handleQueryInput = (e) => {
     const value = e.target.value;
